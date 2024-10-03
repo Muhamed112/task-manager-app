@@ -31,3 +31,8 @@ cd your-repo-name
    d) Also make sure that the APP_URL is correctly set
 5. Run migrations: ```bash php artisan migrate ```
 6. Start the server: ```bash php artisan serve ```
+
+### 3. Setup Frontend
+1. Navigate to the frontend directory: ```bash cd task-manager-frontend ```
+2. Install JavaScript dependencies: ``` npm install ```
+3. Start the React development server: ``` npm run dev ```
