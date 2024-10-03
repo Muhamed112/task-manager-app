@@ -19,3 +19,15 @@ Ensure you have the following installed on your system:
 ```bash
 git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
+
+### 2. Setup Backend
+```bash
+1. Navigate to the backend directoy: cd task-manager-api
+2. Install PHP dependencies via composer: composer install
+3. Setup the environment:
+   a) Copy the env.example file and rename it into .env
+   b) Update database credentials and other environment variables in the .env file ( make sure you setup the database earlier )
+   c) Make sure to add FRONTEND_URL=http://localhost:5173 variable. We need this because we used vite for our frontend app.
+   d) Also make sure that the APP_URL is correctly set
+4. Run migrations: php artisan migrate
+5. Start the server: php artisan serve
