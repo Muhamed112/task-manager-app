@@ -26,8 +26,13 @@ api.interceptors.request.use(
 );
 
 export const fetchTasks = async () => {
-	const response = await api.get("/tasks");
-	return response.data;
+	try {
+		const response = await api.get("/tasks");
+		return response.data;
+	} catch (error) {
+		toast.error("Error fetching tasks");
+		throw error;
+	}
 };
 
 export const login = ({ email, password }) => {
@@ -48,35 +53,62 @@ export const signup = ({ name, email, password, confirmPassword }) => {
 	});
 };
 
-export const deleteTask = ({ id }) => {
-	return api.delete(`/tasks/${id}`);
+export const deleteTask = async ({ id }) => {
+	try {
+		const response = await api.delete(`/tasks/${id}`);
+		return response.data;
+	} catch (error) {
+		toast.error("Error deleting task");
+		throw error;
+	}
 };
 
-export const createTask = ({ name, description, dueDate }) => {
-	return api.post("/tasks", {
-		name,
-		description,
-		due_date: dueDate,
-		status: "pending",
-	});
+export const createTask = async ({ name, description, dueDate }) => {
+	try {
+		const response = await api.post("/tasks", {
+			name,
+			description,
+			due_date: dueDate,
+			status: "pending",
+		});
+		return response.data;
+	} catch (error) {
+		toast.error("Error creating task");
+		throw error;
+	}
 };
 
-export const updateTask = ({ name, description, dueDate, isCompleted, id }) => {
-	return api.put(`/tasks/${id}`, {
-		name,
-		description,
-		due_date: dueDate,
-		status: isCompleted ? "completed" : "pending",
-	});
+export const updateTask = async ({ name, description, dueDate, isCompleted, id }) => {
+	try {
+		const response = await api.put(`/tasks/${id}`, {
+			name,
+			description,
+			due_date: dueDate,
+			status: isCompleted ? "completed" : "pending",
+		});
+		return response.data;
+	} catch (error) {
+		toast.error("Error updating task");
+		throw error;
+	}
 };
 
 export const getTask = async ({ id }) => {
-	const response = await api.get(`/tasks/${id}`);
-
-	return response.data;
+	try {
+		const response = await api.get(`/tasks/${id}`);
+		return response.data;
+	} catch (error) {
+		toast.error("Error fetching task");
+		throw error;
+	}
 };
 
 export const fetchRandomQuote = async () => {
-	const response = await axios.get("https://api.quotable.io/random");
-	return response.data;
+	try {
+		const response = await axios.get("http://api.quotable.io/random");
+		return response.data;
+	} catch (error) {
+		toast.error("Error fetching quote");
+		throw error;
+	}
 };

@@ -37,19 +37,24 @@ function TaskList() {
 							Add New Task
 						</button>
 					</div>
-
-					<ul id="todo-list">
-						{tasks?.map(({ id, name, description, due_date, status }) => (
-							<SingleTask
-								key={id}
-								id={id}
-								title={name}
-								description={description}
-								dueDate={due_date}
-								status={status}
-							/>
-						))}
-					</ul>
+					{tasks?.length === 0 ? (
+						<div className="bg-white rounded p-4 text-lg font-semibold">
+							You don't have any tasks left !
+						</div>
+					) : (
+						<ul id="todo-list">
+							{tasks?.map(({ id, name, description, due_date, status }) => (
+								<SingleTask
+									key={id}
+									id={id}
+									title={name}
+									description={description}
+									dueDate={due_date}
+									status={status}
+								/>
+							))}
+						</ul>
+					)}
 				</div>
 			</div>
 		</Container>
