@@ -33,12 +33,15 @@ cd your-repo-name
     cd task-manager-api
     ```
 
-2. **Install PHP dependencies**:
+2. Make sure that in php.ini file you have enabled following extensions: curl, fileinfo, mbstring, openssl, mysqli, pdo_mysql
+   Last two extensions depend on which database you use in this case it's MySQL
+
+3. **Install PHP dependencies**:
     ```bash
     composer install
     ```
 
-3. **Set up the environment**:
+4. **Set up the environment**:
     - Copy the `.env.example` file and rename it to `.env`:
       ```bash
       cp .env.example .env
@@ -47,12 +50,12 @@ cd your-repo-name
     - Make sure to add `FRONTEND_URL=http://localhost:5173` since the frontend uses Vite for development.
     - Ensure the `APP_URL` is correctly set to your backend's local URL (e.g., `http://localhost:8000`).
 
-4. **Run database migrations**:
+5. **Run database migrations**:
     ```bash
     php artisan migrate
     ```
 
-5. **Start the Laravel development server**:
+6. **Start the Laravel development server**:
     ```bash
     php artisan serve
     ```
